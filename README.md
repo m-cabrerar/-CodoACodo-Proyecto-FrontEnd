@@ -1,4 +1,4 @@
-# -CodoACodo-ProyectoIntegrador
+# [CodoACodo] ProyectoIntegrador
 Proyecto para el curso de programación Codo a Codo, integrador de los conocimientos aprendidos en el curso
 
 

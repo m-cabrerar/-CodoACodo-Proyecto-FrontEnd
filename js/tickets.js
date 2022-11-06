@@ -49,39 +49,33 @@ function validarForm() {
 }
 
 function calcularTotal(cant, desc) {
-    return cant * PRECIO * (1-desc);
+    return (cant * PRECIO * (1-desc)).toFixed(2);
 }
 
 function crearError(mensaje) {
-    error = document.createElement("div");
-    error.className = "alert alert-danger mb-0";
+    error = document.getElementById("alert");
+    error.className = "alert col-12 alert-danger mb-0";
     error.textContent = mensaje;
-    return error;
 }
 
 function resumenCompra(total) {
-    resumen = document.createElement("div");
-    resumen.className = "alert alert-success mb-0";
+    resumen = document.getElementById("alert");
+    resumen.className = "alert col-12 alert-success mb-0";
     resumen.textContent = "Total a Pagar: $" + total;
-    return resumen;
 }
 
 function borrarAlerta() {
-    alertas = document.getElementsByClassName("alert");
-    if(alertas.length > 0) {
-        alertas[0].remove();
-    }
+    alertas = document.getElementById("alert");
+    alertas.className = "d-none";
 }
 
 document.getElementById("resumen").addEventListener("click", function(){
     var validacion = validarForm();
     borrarAlerta();
     if(validacion.error) {
-        error = crearError(validacion.mensaje);
-        form.insertBefore(error, document.getElementById("buttons"));
+        crearError(validacion.mensaje);
     }else{
         total = calcularTotal(cantidad.value, DESCUENTO[categoria.value]);
         resumen = resumenCompra(total);
-        form.insertBefore(resumen, document.getElementById("buttons"));
     }
 });
